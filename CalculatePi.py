@@ -3,7 +3,7 @@ import sys
 import matplotlib.pyplot as plt
 
 sys.path.append(".")
-from python.Random import Random
+from Random import Random
 
 if __name__ == "__main__":
 
@@ -36,6 +36,10 @@ if __name__ == "__main__":
 	calcPi = []
 
 	random = Random()
+	np.random.uniform
+
+
+
 
 	idraw = max(1,int(Nsample)/100000)
 	for i in range(0,Nsample):
@@ -55,29 +59,30 @@ if __name__ == "__main__":
 		if(i % idraw == 0):
 			isample.append(nTotal)
 			calcPi.append(4*nAccept/nTotal)
+			np.savetxt("pi-values.txt",calcPi)
 
 
 
 	#plot calculated pi vs sample number
 	fig1 = plt.figure()
-	plt.plot(isample,calcPi)
-	plt.ylabel(r'Approximate $\pi$')
-	plt.xlabel("Sample number")
+	plt.plot(isample,calcPi, color='r')
+	plt.ylabel(r'Approximate values of $\pi$')
+	plt.xlabel(" Sample # ")
 	plt.xlim(0,isample[len(isample)-1])
 	ax = plt.gca()
-	ax.axhline(y=np.arccos(-1),color='green',label=r'true $\pi$')
+	ax.axhline(y=np.arccos(-1),color='blue',label=r'true values of $\pi$')
 	plt.title(r'Approximation of $\pi$ as a function of number of samples')
 	plt.legend()
 
-	fig1.savefig("calculatedPiPy.pdf")
+	fig1.savefig("calculatedPiPy-1000.pdf")
 
 
 	#plot accept/reject points
 	fig2 = plt.figure()
-	plt.plot(Xaccept,Yaccept,marker='o',linestyle='',color='green',label='accept')
-	plt.plot(Xreject,Yreject,marker='o',linestyle='',color='red',label='reject')
-	plt.ylabel("Y")
-	plt.xlabel("X")
+	plt.plot(Xaccept,Yaccept,marker='o', markersize = 3, linestyle='',color='green',label='accept')
+	plt.plot(Xreject,Yreject,marker='o', markersize = 3, linestyle='',color='red',label='reject')
+	plt.ylabel("Y random numbers")
+	plt.xlabel("X random numbers")
 	plt.legend()
 
 
@@ -86,4 +91,4 @@ if __name__ == "__main__":
 	plt.plot(x_circle,y_circle,color='blue',label=r'$x^2 + y^2 = 1$')
 	plt.legend()
 	plt.title('Sampled points')
-	fig2.savefig("circleQuadPy.pdf")
+	fig2.savefig("circleQuadPy-1000.pdf")

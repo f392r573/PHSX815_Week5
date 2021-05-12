@@ -21,6 +21,15 @@ def PlotGaus(x,bin_width):
 
 # Uniform (flat) distribution scaled to Gaussian max
 # Note: multiply by bin width to match histogram
+
+def function2(x):
+	return 0.5*np.exp(-x*x/2.)
+
+		
+def PlotFlat2(x,bin_width):
+	return bin_width*function2(x)
+
+
 def Flat(x):
 	return 1./np.sqrt(2*np.arccos(-1.))
 	
@@ -103,7 +112,7 @@ if __name__ == "__main__":
 			R = Gaus(X)/FlatPlusExpo(X)
 		else:
 			X = SampleFlat()
-			R = Gaus(X)/Flat(X)
+			R = Gaus(X)/function2(X)
 		rand = random.rand()
 		if(rand > R): #reject if outside
 			continue
@@ -135,10 +144,10 @@ if __name__ == "__main__":
 	x = np.arange(Xmin,Xmax,0.001)
 	y_norm = list(map(PlotGaus,x,np.ones_like(x)*bin_width))
 	# y_norm = list(map(PlotGaus(x,bin_width))
-	plt.plot(x,y_norm,color='green',label='target f(x)')
+	plt.plot(x,y_norm,color='blue',label='target f(x)')
 
 	if not doExpo:
-		y_flat = list(map(PlotFlat,x,np.ones_like(x)*bin_width))
+		y_flat = list(map(PlotFlat2,x,np.ones_like(x)*bin_width))
 	else:
 		y_flat = list(map(PlotFlatPlusExpo,x,np.ones_like(x)*bin_width))
 
@@ -149,4 +158,4 @@ if __name__ == "__main__":
 	
 	plt.legend()
 	plt.show()
-	plt.savefig("RandomGaussPy.pdf")
+	plt.savefig("RandomGaussPy-1000.pdf")
