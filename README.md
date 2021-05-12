@@ -21,5 +21,5 @@ CalculatePi.py and GaussRandom.py are example code provided by Prof.Rogan in cla
 -python python/GaussRandom.py -Nsample 1000 -range 5 --log --expo
 
 -python python/GaussRandom.py -Nsample 1000 -range 10 --log --expoRandom.py
-
-
+ 
+-python numerical-integration.py -N 40 -a 4 -b 8
