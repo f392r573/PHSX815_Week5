@@ -17,8 +17,8 @@ CalculatePi.py and GaussRandom.py are example code provided by Prof.Rogan in cla
 ## Steps to run the code:
 
 ## HW-5
--python3 calculate-pi.py 
--python3 CalculatePi.py -Nsample 1000
+- python3 calculate-pi.py 
+- python3 CalculatePi.py -Nsample 1000
 
 ## HW-6
 - python3 GaussRandom.py -Nsample 1000 -range 5 --log --expo (Efficiency was 0.757002271006813)
